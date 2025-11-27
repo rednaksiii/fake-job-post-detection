@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { LatestPost } from "~/app/_components/post";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -30,8 +29,7 @@ import {
   SelectValue,
 } from "~/components/ui/select"
 
-import { api, HydrateClient } from "~/trpc/server";
-import { Feather } from "lucide-react";
+import { HydrateClient } from "~/trpc/server";
 import { Button } from "~/components/ui/button";
 import { Textarea } from "~/components/ui/textarea";
 import { Input } from "~/components/ui/input";
@@ -62,36 +60,36 @@ const contributors: { title: string; href: string; description: string }[] = [
     title: "Ben Morin",
     href: "#",
     description:
-      "These are the responsibilities than Ben handled in this project.",
+      "I handled building the preprocessing pipeline and training the model.",
   },
   {
     title: "Khang Nguyen",
     href: "https://www.ndtkhang.dev",
     description:
-      "I handled the whole web app and integrating all services",
+      "I handled the full stack web app and integrating all services and POCs",
   },
   {
     title: "John Yoshida",
     href: "#",
     description:
-      "These are the responsibilities than John handled in this project.",
+      "I handled fetching, analyzing, and cleaning the dataset.",
   },
   {
     title: "Ishkandar",
     href: "#",
-    description: "These are the responsibilities than Ishkandar handled in this project.",
+    description: "I handled deploying the ML with FastAPI.",
   },
   {
     title: "David Harrison",
     href: "#",
     description:
-      "These are the responsibilities than David handled in this project.",
+      "I researched evaluation metrics for our models and wrote the report.",
   },
   {
-    title: "Jiming Park",
+    title: "Jin Park",
     href: "#",
     description:
-      "These are the responsibilities than Jiming handled in this project.",
+      "I made the POC for the LLM call to parse the the Job Description for our ML Model.",
   },
 ]
 
@@ -149,7 +147,7 @@ export default async function Home() {
             </h1>
 
             <p className="mt-6 text-lg max-w-2xl text-center text-muted-foreground">
-              Answer a few questions about a job posts you saw on LinkedIn, etc. and let us tell you if it's likely to be fake or real.
+              Answer a few questions about a job post you saw on LinkedIn, etc. and let us tell you if it's likely to be fake or real.
               Recommended to copy and paste things from the job posts instead of manually fill it out for best results.
             </p>
           </div>
@@ -200,13 +198,14 @@ export default async function Home() {
                               </FieldLabel>
                               <Select defaultValue="">
                                 <SelectTrigger id="checkout-7j9-exp-year-f59">
-                                  <SelectValue placeholder="Type" />
+                                  <SelectValue placeholder="Not Specified" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  <SelectItem value="2024">Intern</SelectItem>
-                                  <SelectItem value="2025">Part-Time</SelectItem>
-                                  <SelectItem value="2026">Full-Time</SelectItem>
-                                  <SelectItem value="2027">Contractor</SelectItem>
+                                  <SelectItem value="Not Specified">Not Specified</SelectItem>
+                                  <SelectItem value="Intern">Intern</SelectItem>
+                                  <SelectItem value="Part-Time">Part-Time</SelectItem>
+                                  <SelectItem value="Full-Time">Full-Time</SelectItem>
+                                  <SelectItem value="Contractor">Contractor</SelectItem>
                                 </SelectContent>
                               </Select>
                             </Field>
