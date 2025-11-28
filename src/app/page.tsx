@@ -26,7 +26,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className ="flex flex-col lg:flex-row min-h-screen gap-6 px-4 md:px-32 py-16 sm:px-8">
+          <div className ="flex flex-col lg:flex-row gap-6 px-4 md:px-32 py-16 sm:px-8">
 
             <JobPostForm />
             <Result />
