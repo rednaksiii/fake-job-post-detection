@@ -6,14 +6,13 @@ export function Result({
 }: {
     result: z.infer<typeof MLReturn> | null;
 }) {
-
-    const hasResult = !!result;
-    const maybeResult = hasResult
-      ? ((result as any).result ?? (result as any).fradulant ?? JSON.stringify(result))
-      : null;
-    const confidence = hasResult
-      ? Math.round(((result as any).confidence ?? 0) * 100)
-      : null;
+    console.log("Result:", result);
+    const prediction: string = result
+      ? String(result.fraudulent)
+      : "N/A";
+    const confidence: number = result
+      ? Math.round((result.confidence ?? 0) * 100)
+      : 0;
 
     return (
         // Result on the right side
@@ -24,9 +23,9 @@ export function Result({
             </div>
             <div className="flex flex-col gap-2 items-center py-24">
                 <div className="w-60 h-60 rounded-full bg-gray-200 flex flex-col font-extralight items-center justify-center shadow-md">
-                    <h1 className="text-6xl text-black">{hasResult ? maybeResult : "N/A"}</h1>
+                    <h1 className="text-6xl text-black">{result ? prediction : "N/A"}</h1>
                     <p className="mt-1 text-gray-600">Confidence:</p>
-                    <h1 className="text-4xl text-black">{hasResult ? confidence : 0}%</h1>
+                    <h1 className="text-4xl text-black">{result ? confidence : 0}%</h1>
                 </div>
             </div>
         </div>

@@ -38,13 +38,13 @@ Extract structured information from the following job description.
 Return EXACTLY this JSON structure:
 
 {
-  "company_profile": string or null,
-  "description": string or null,
-  "requirements": string or null,
+  "company_profile": string or "",
+  "description": string or "",
+  "requirements": string or "",
 }
 
 IMPORTANT:
-- If a field is missing in the text, set it to null.
+- If a field is missing in the text, set it to "".
 - Output ONLY a JSON object. No markdown or extra text.
 
 The given "About the Job" section:

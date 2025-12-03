@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
-import { jobPostFull, jobPostNoParse, jobPostParse, LLMReturn } from "~/server/ml/job_post_schema";
+import { jobPostFull, jobPostNoParse, jobPostParse, LLMReturn, MLReturn } from "~/server/ml/job_post_schema";
 import { predictFraudulentJob } from "~/server/ml/predictor";
 
 export const formRouter = createTRPCRouter({
@@ -20,6 +20,7 @@ export const formRouter = createTRPCRouter({
       jobPostNoParse: jobPostNoParse,
       LLMReturn: LLMReturn,
     }))
+    .output(MLReturn)
     .mutation(async ({ input }) => {
       
       // make the full job post object
@@ -27,11 +28,11 @@ export const formRouter = createTRPCRouter({
         ...input.jobPostNoParse,
         ...input.LLMReturn,
       });
-
       // pass it to the fastAPI ML model for prediction
-      const result = await predictFraudulentJob(fullJobPost);
+      const result: z.infer<typeof MLReturn> = await predictFraudulentJob(fullJobPost);
 
+      const res = MLReturn.parse(result);
       // Mocked response for now
-      return result;
+      return res;
     }),
 });

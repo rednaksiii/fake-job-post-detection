@@ -11,14 +11,14 @@ export const jobPostFull = z.object({
   function: z.string(),
   min_salary: z.string(),
   max_salary: z.string(),
-  company_profile: z.string().nullable(),
-  description: z.string().nullable(),
-  requirements: z.string().nullable(),
+  company_profile: z.string(),
+  description: z.string(),
+  requirements: z.string(),
   benefits: z.string(),
   telecommuting: z.boolean(),
   has_company_logo: z.boolean(),
   has_questions: z.boolean(),
-  required_education: z.boolean(),
+  required_education: z.string(),
 });
 
 // Everything that's not going to be passed to the LLM
@@ -47,13 +47,13 @@ export const jobPostParse = z.object({
 
 // Everything that the OpenAI LLM will return
 export const LLMReturn = z.object({
-  company_profile: z.string().nullable(),
-  description: z.string().nullable(),
-  requirements: z.string().nullable(),
+  company_profile: z.string(),
+  description: z.string(),
+  requirements: z.string(),
 });
 
 // Everything that the FastAPI ML Model return
 export const MLReturn = z.object({
-  fradulant: z.boolean(), // predicted fraudulent or not
+  fraudulent: z.boolean(), // predicted fraudulent or not
   confidence: z.number().min(0).max(1), // confidence percentage between 0 and 1
 });

@@ -48,6 +48,10 @@ export function JobPostForm() {
   const [result, setResult] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const reformatMutation = api.form.reformat.useMutation();
+  const predictMutation = api.form.predict.useMutation();
+  const isSubmitting = reformatMutation.isPending || predictMutation.isPending;
+
   async function handleSubmit(event: React.FormEvent) {
     event?.preventDefault();
     setError(null);
@@ -84,12 +88,12 @@ export function JobPostForm() {
     let LLMResponse: z.infer<typeof LLMReturn>;
     let predictionResult: z.infer<typeof MLReturn>;
     try {
-      LLMResponse = await api.form.reformat.useMutation().mutateAsync({ aboutTheJob: jobPostParseObj });
+      LLMResponse = await reformatMutation.mutateAsync({ aboutTheJob: jobPostParseObj });
       setResult(LLMResponse);
 
       // when done parsing, pass to FastAPI for prediction
       try {
-        predictionResult = await api.form.predict.useMutation().mutateAsync({ jobPostNoParse: jobPostNoParseObj, LLMReturn: LLMResponse });
+        predictionResult = await predictMutation.mutateAsync({ jobPostNoParse: jobPostNoParseObj, LLMReturn: LLMResponse });
         setResult(predictionResult);
       } catch (err: any) {
         setError(err?.message ?? String(err));
@@ -124,7 +128,6 @@ export function JobPostForm() {
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder="e.g. React Developer"
-                      required
                     />
                   </Field>
 
@@ -138,7 +141,6 @@ export function JobPostForm() {
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
                       placeholder="e.g. New York, NY"
-                      required
                     />
                   </Field>
 
@@ -175,7 +177,6 @@ export function JobPostForm() {
                       value={industry}
                       onChange={(e) => setIndustry(e.target.value)}
                       placeholder="e.g. Technology"
-                      required
                     />
                   </Field>
 
@@ -189,7 +190,6 @@ export function JobPostForm() {
                       value={department}
                       onChange={(e) => setDepartment(e.target.value)}
                       placeholder="e.g. Technology"
-                      required
                     />
                   </Field>
 
@@ -228,7 +228,6 @@ export function JobPostForm() {
                       value={minSalary}
                       onChange={(e) => setMinSalary(e.target.value)}
                       placeholder="e.g. 50,000k"
-                      required
                     />
                   </Field>
 
@@ -241,7 +240,6 @@ export function JobPostForm() {
                       value={maxSalary}
                       onChange={(e) => setMaxSalary(e.target.value)}
                       placeholder="e.g. 100,000k"
-                      required
                     />
                   </Field>
 
@@ -328,21 +326,21 @@ export function JobPostForm() {
                 <FieldGroup>
                   <div className="flex items-center space-x-6">
                     <Field orientation="horizontal">
-                      <Checkbox id="checkout-telecommuting" checked={telecommuting} onChange={(v) => setTelecommuting(!!v)} />
+                      <Checkbox id="checkout-telecommuting" checked={telecommuting} onCheckedChange={(v) => setTelecommuting(!!v)} />
                       <FieldLabel htmlFor="checkout-telecommuting" className="font-normal">
                         Telecommuting
                       </FieldLabel>
                     </Field>
 
                     <Field orientation="horizontal">
-                      <Checkbox id="checkout-has-company-logo" checked={hasCompanyLogo} onChange={(v) => setHasCompanyLogo(!!v)} />
+                      <Checkbox id="checkout-has-company-logo" checked={hasCompanyLogo} onCheckedChange={(v) => setHasCompanyLogo(!!v)} />
                       <FieldLabel htmlFor="checkout-has-company-logo" className="font-normal">
                         Has Company Logo
                       </FieldLabel>
                     </Field>
 
                     <Field orientation="horizontal">
-                      <Checkbox id="checkout-has-questions" checked={hasQuestions} onChange={(v) => setHasQuestions(!!v)} />
+                      <Checkbox id="checkout-has-questions" checked={hasQuestions} onCheckedChange={(v) => setHasQuestions(!!v)} />
                       <FieldLabel htmlFor="checkout-has-questions" className="font-normal">
                         Has Questions
                       </FieldLabel>
@@ -352,7 +350,7 @@ export function JobPostForm() {
 
                 {/* TODO: Start the parser and pass to FastAPI */}
                 <Field orientation="horizontal">
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit" disabled = {isSubmitting}>{isSubmitting ? "Submitting..." : "Submit"}</Button>
                   <Button variant="outline" type="button">
                     Cancel
                   </Button>
