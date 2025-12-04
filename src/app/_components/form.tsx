@@ -40,9 +40,9 @@ export function JobPostForm() {
   const [maxSalary, setMaxSalary] = useState("")
   const [jobDescription, setJobDescription] = useState("")
   const [benefits, setBenefits] = useState("")
-  const [telecommuting, setTelecommuting] = useState(false)
-  const [hasCompanyLogo, setHasCompanyLogo] = useState(false)
-  const [hasQuestions, setHasQuestions] = useState(false)
+  const [telecommuting, setTelecommuting] = useState(0)
+  const [hasCompanyLogo, setHasCompanyLogo] = useState(0)
+  const [hasQuestions, setHasQuestions] = useState(0)
   const [requiredExperience, setRequiredExperience] = useState("")
   const [requiredEducation, setRequiredEducation] = useState("")
   const [result, setResult] = useState<any | null>(null);
@@ -65,7 +65,7 @@ export function JobPostForm() {
           : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`,
       title: title,
       location: location,
-      employmentType: employmentType,
+      employment_type: employmentType,
       industry: industry,
       department: department,
       function: jobFunction,
@@ -326,21 +326,21 @@ export function JobPostForm() {
                 <FieldGroup>
                   <div className="flex items-center space-x-6">
                     <Field orientation="horizontal">
-                      <Checkbox id="checkout-telecommuting" checked={telecommuting} onCheckedChange={(v) => setTelecommuting(!!v)} />
+                      <Checkbox id="checkout-telecommuting" checked={telecommuting === 1} onCheckedChange={(v) => setTelecommuting(v ? 1 : 0)} />
                       <FieldLabel htmlFor="checkout-telecommuting" className="font-normal">
                         Telecommuting
                       </FieldLabel>
                     </Field>
 
                     <Field orientation="horizontal">
-                      <Checkbox id="checkout-has-company-logo" checked={hasCompanyLogo} onCheckedChange={(v) => setHasCompanyLogo(!!v)} />
+                      <Checkbox id="checkout-has-company-logo" checked={hasCompanyLogo === 1} onCheckedChange={(v) => setHasCompanyLogo(v ? 1 : 0)} />
                       <FieldLabel htmlFor="checkout-has-company-logo" className="font-normal">
                         Has Company Logo
                       </FieldLabel>
                     </Field>
 
                     <Field orientation="horizontal">
-                      <Checkbox id="checkout-has-questions" checked={hasQuestions} onCheckedChange={(v) => setHasQuestions(!!v)} />
+                      <Checkbox id="checkout-has-questions" checked={hasQuestions === 1} onCheckedChange={(v) => setHasQuestions(v ? 1 : 0)} />
                       <FieldLabel htmlFor="checkout-has-questions" className="font-normal">
                         Has Questions
                       </FieldLabel>
