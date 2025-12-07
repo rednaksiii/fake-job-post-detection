@@ -13,9 +13,8 @@
 
 > *Click below to watch our application in action*
 
-[![Fake Job Post Detective Demo](https://img.youtube.com/vi/PLACEHOLDER/maxresdefault.jpg)](https://youtu.be/PLACEHOLDER)
+[![Fake Job Post Detective Demo](https://img.youtube.com/vi/PLACEHOLDER/maxresdefault.jpg)]([https://youtu.be/PLACEHOLDER](https://youtu.be/99kwZoZyrbc))
 
-*Replace `PLACEHOLDER` with your YouTube video ID once uploaded*
 
 ---
 
