@@ -78,7 +78,7 @@
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/ndtkhang/fake_job_post_detective.git
+git clone https://github.com/rednaksiii/fake_job_post_detective.git
 cd fake_job_post_detective
 ```
 
