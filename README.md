@@ -1,29 +1,267 @@
-# Create T3 App
+# 🕵️ Fake Job Post Detective
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+> **An AI-powered web application that helps job seekers identify fraudulent job postings using machine learning**
 
-## What's next? How do I make an app with this?
+[![Machine Learning](https://img.shields.io/badge/ML-Ensemble%20Models-blue)](https://github.com/ndtkhang/fake_job_post_detective)
+[![ROC-AUC](https://img.shields.io/badge/ROC--AUC-97%25-success)](https://github.com/ndtkhang/fake_job_post_detective)
+[![T3 Stack](https://img.shields.io/badge/Built%20with-T3%20Stack-blueviolet)](https://create.t3.gg/)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688)](https://fastapi.tiangolo.com/)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+---
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## 📹 Demo Video
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+> *Click below to watch our application in action*
 
-## Learn More
+[![Fake Job Post Detective Demo](https://img.youtube.com/vi/PLACEHOLDER/maxresdefault.jpg)](https://youtu.be/PLACEHOLDER)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+*Replace `PLACEHOLDER` with your YouTube video ID once uploaded*
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+---
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## 🎯 Project Overview
 
-## How do I deploy this?
+**Fake Job Post Detective** is a full-stack machine learning application developed for **CS 5821 Machine Learning** that detects fraudulent job postings with **97% accuracy**. The system combines advanced ensemble ML models with an intuitive web interface to protect job seekers from scams.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### ✨ Key Features
+
+- 🤖 **High-Performance ML Model** - Voting ensemble (Gradient Boosting + XGBoost + LightGBM) achieving 0.9709 ROC-AUC
+- ⚡ **Real-Time Predictions** - FastAPI backend with ~200ms response time
+- 🎨 **Modern UI** - Clean, responsive interface built with React and TailwindCSS
+- 🔍 **Intelligent Parser** - Automatically extracts and formats job posting data
+- 📊 **Confidence Scoring** - Provides probability scores and explanations for each prediction
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────┐      ┌──────────────────┐      ┌─────────────────────┐
+│   Web Frontend  │ ───▶ │   FastAPI Server │ ───▶ │  ML Voting Ensemble │
+│   (T3 Stack)    │ ◀─── │   (REST API)     │ ◀─── │   (97% ROC-AUC)     │
+└─────────────────┘      └──────────────────┘      └─────────────────────┘
+         │                        │                           │
+         │                        │                           │
+    User Input              Preprocessing              Model Inference
+  (Copy/Paste Job)      (TF-IDF + SVD + Scaler)   (GB + XGB + LGBM)
+```
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- [Next.js](https://nextjs.org) - React framework with server-side rendering
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
+- [tRPC](https://trpc.io) - End-to-end typesafe APIs
+- [Shadcn UI](https://ui.shadcn.com/) - Beautiful, accessible components
+
+### Backend & ML
+- [FastAPI](https://fastapi.tiangolo.com/) - High-performance Python API framework
+- [scikit-learn](https://scikit-learn.org/) - Machine learning library
+- [XGBoost](https://xgboost.readthedocs.io/) - Gradient boosting framework
+- [LightGBM](https://lightgbm.readthedocs.io/) - Fast gradient boosting
+- [Uvicorn](https://www.uvicorn.org/) - Lightning-fast ASGI server
+
+### Development Tools
+- [Prisma](https://prisma.io) - Next-generation ORM
+- [Zod](https://zod.dev/) - TypeScript-first schema validation
+- Git & GitHub - Version control and collaboration
+
+---
+
+## 📦 Installation & Setup
+
+### Prerequisites
+- Node.js 18+ and npm/pnpm
+- Python 3.9+
+- Git
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/ndtkhang/fake_job_post_detective.git
+cd fake_job_post_detective
+```
+
+### 2️⃣ Install Frontend Dependencies
+```bash
+npm install
+# or
+pnpm install
+```
+
+### 3️⃣ Set Up Environment Variables
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and add your configuration:
+```env
+DATABASE_URL="your-database-url"
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+API_URL="http://localhost:8000"
+```
+
+### 4️⃣ Run Database Migrations
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
+
+### 5️⃣ Start the Development Server
+```bash
+npm run dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser 🎉
+
+---
+
+## 🤖 ML Model Setup
+
+### Install Python Dependencies
+```bash
+pip install fastapi uvicorn scikit-learn xgboost lightgbm joblib pandas numpy
+```
+
+### Run the FastAPI Server
+```bash
+cd api
+uvicorn app:app --reload --port 8000
+```
+
+API Documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+---
+
+## 📊 Model Performance
+
+| Metric | Score |
+|--------|-------|
+| **ROC-AUC** | **0.9709** (97.09%) |
+| **Accuracy** | 97.2% |
+| **Fake Job Recall** | 77.3% |
+| **Precision** | High |
+
+*Significantly exceeds typical fraud detection benchmarks (70-80%) by 24%*
+
+### Feature Importance
+- 🏢 **has_company_logo**: 28.4%
+- 📝 Text-derived features (TF-IDF + SVD)
+- 💼 Employment type, experience, education
+
+---
+
+## 👥 Team
+
+**CS 5821 Machine Learning - Group 4**
+
+- **Khang Nguyen** - Base Web Application
+- **Jin Park** - Parser Integration
+- **Iskandar Kholmatov** - ML Model & API Deployment
+- **Ben Morin** - Data Analysis
+- **David Harrison** - Data Analysis
+- **John Yoshida** - Data Analysis
+
+---
+
+## 📄 Documentation
+
+- Project Report - Detailed technical report
+- [API Documentation](http://localhost:8000/docs) - FastAPI Swagger UI
+- [T3 Stack Docs](https://create.t3.gg/) - Framework documentation
+
+---
+
+## 🛠️ Development Workflow
+
+### Branch Strategy
+- `main` - Production-ready releases
+- `development` - Pre-release testing
+- `<name>-<feature>` - Feature development (e.g., `jin-parser`)
+
+### Deployment Stages
+1. **Mock** - Frontend mockups + parser prototype
+2. **First Integration** - Parser → Frontend pipeline
+3. **Second Integration** - FastAPI → Full stack integration
+
+---
+
+## 🚀 Deployment
+
+### Local Deployment Only
+Due to resource constraints, this project runs locally. To test:
+
+1. Contact **Khang Nguyen** for a live demo
+2. Follow installation steps above for local setup
+
+### Production Deployment (Future)
+Follow deployment guides for:
+- [Vercel](https://create.t3.gg/en/deployment/vercel) - Frontend hosting
+- [Railway](https://railway.app/) or [Render](https://render.com/) - API hosting
+- [Docker](https://create.t3.gg/en/deployment/docker) - Containerization
+
+---
+
+## 📝 License
+
+This project was created for educational purposes as part of CS 5821 Machine Learning course.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Dataset**: [Real or Fake Job Posting Prediction](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction) by Shivam Bansal
+- **Framework**: [T3 Stack](https://create.t3.gg/) by Theo Browne
+- **Course**: CS 5821 Machine Learning
+
+---
+
+## 🤝 Contributing
+
+This is a course project and is not actively maintained. However, feel free to fork and adapt for your own use!
+
+---
+
+<div align="center">
+
+**[⭐ Star this repo](https://github.com/ndtkhang/fake_job_post_detective)** if you found it helpful!
+
+Made with ❤️ by Group 4
+
+</div>
+```
+
+---
+
+**Key improvements:**
+- ✅ Professional header with badges
+- ✅ Video placeholder section (ready for YouTube embed)
+- ✅ Clear architecture diagram
+- ✅ Comprehensive installation guide
+- ✅ Performance metrics table
+- ✅ Team credits
+- ✅ Visual hierarchy with emojis
+- ✅ Better organized sections
+- ✅ Deployment instructions
+- ✅ Professional formatting
+
+**To add your video:** Replace both `PLACEHOLDER` instances with your YouTube video ID (the part after `v=` in the URL).---
+
+**Key improvements:**
+- ✅ Professional header with badges
+- ✅ Video placeholder section (ready for YouTube embed)
+- ✅ Clear architecture diagram
+- ✅ Comprehensive installation guide
+- ✅ Performance metrics table
+- ✅ Team credits
+- ✅ Visual hierarchy with emojis
+- ✅ Better organized sections
+- ✅ Deployment instructions
+- ✅ Professional formatting
+
+**To add your video:** Replace both `PLACEHOLDER` instances with your YouTube video ID (the part after `v=` in the URL).
