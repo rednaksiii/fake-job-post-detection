@@ -15,7 +15,6 @@
 
 [![Fake Job Post Detective Demo](https://img.youtube.com/vi/99kwZoZyrbc/maxresdefault.jpg)](https://youtu.be/99kwZoZyrbc)
 
-
 ---
 
 ## 🎯 Project Overview
