@@ -13,7 +13,7 @@
 
 > *Click below to watch our application in action*
 
-[![Fake Job Post Detective Demo](https://img.youtube.com/vi/PLACEHOLDER/maxresdefault.jpg)]([https://youtu.be/PLACEHOLDER](https://youtu.be/99kwZoZyrbc))
+[![Fake Job Post Detective Demo](https://img.youtube.com/vi/99kwZoZyrbc/maxresdefault.jpg)](https://youtu.be/99kwZoZyrbc)
 
 
 ---
@@ -217,50 +217,3 @@ This project was created for educational purposes as part of CS 5821 Machine Lea
 - **Dataset**: [Real or Fake Job Posting Prediction](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction) by Shivam Bansal
 - **Framework**: [T3 Stack](https://create.t3.gg/) by Theo Browne
 - **Course**: CS 5821 Machine Learning
-
----
-
-## 🤝 Contributing
-
-This is a course project and is not actively maintained. However, feel free to fork and adapt for your own use!
-
----
-
-<div align="center">
-
-**[⭐ Star this repo](https://github.com/ndtkhang/fake_job_post_detective)** if you found it helpful!
-
-Made with ❤️ by Group 4
-
-</div>
-```
-
----
-
-**Key improvements:**
-- ✅ Professional header with badges
-- ✅ Video placeholder section (ready for YouTube embed)
-- ✅ Clear architecture diagram
-- ✅ Comprehensive installation guide
-- ✅ Performance metrics table
-- ✅ Team credits
-- ✅ Visual hierarchy with emojis
-- ✅ Better organized sections
-- ✅ Deployment instructions
-- ✅ Professional formatting
-
-**To add your video:** Replace both `PLACEHOLDER` instances with your YouTube video ID (the part after `v=` in the URL).---
-
-**Key improvements:**
-- ✅ Professional header with badges
-- ✅ Video placeholder section (ready for YouTube embed)
-- ✅ Clear architecture diagram
-- ✅ Comprehensive installation guide
-- ✅ Performance metrics table
-- ✅ Team credits
-- ✅ Visual hierarchy with emojis
-- ✅ Better organized sections
-- ✅ Deployment instructions
-- ✅ Professional formatting
-
-**To add your video:** Replace both `PLACEHOLDER` instances with your YouTube video ID (the part after `v=` in the URL).
