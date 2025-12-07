@@ -194,8 +194,7 @@ API Documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
 ### Local Deployment Only
 Due to resource constraints, this project runs locally. To test:
 
-1. Contact **Khang Nguyen** for a live demo
-2. Follow installation steps above for local setup
+– Follow installation steps above for local setup
 
 ### Production Deployment (Future)
 Follow deployment guides for:
