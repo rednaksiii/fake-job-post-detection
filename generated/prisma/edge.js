@@ -125,7 +125,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\micha\\OneDrive\\Documents\\Khang\\Programming\\Classes\\Machine Learning\\webapp\\fake_job_post_detective\\generated\\prisma",
+      "value": "/Users/iskandarkholmatov/Desktop/Projects/fake-job-post-detection/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -134,12 +134,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\micha\\OneDrive\\Documents\\Khang\\Programming\\Classes\\Machine Learning\\webapp\\fake_job_post_detective\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/iskandarkholmatov/Desktop/Projects/fake-job-post-detection/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -153,6 +153,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

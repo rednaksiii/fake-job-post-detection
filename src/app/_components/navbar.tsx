@@ -49,8 +49,8 @@ const contributors: { title: string; href: string; description: string }[] = [
       "I handled fetching, analyzing, and cleaning the dataset.",
   },
   {
-    title: "Ishkandar",
-    href: "#",
+    title: "Iskandar Kholmatov",
+    href: "https://github.com/rednaksiii?tab=repositories",
     description: "I handled deploying the ML with FastAPI.",
   },
   {
